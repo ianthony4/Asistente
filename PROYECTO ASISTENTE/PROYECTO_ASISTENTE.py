@@ -9,13 +9,13 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 tema = "Ejecucion de Instrucciones"
-#CONVERTIR CADENAS DE TEXTO A AUDIO Y REPRODUCIRLAS
+# (NO TOCAR) CONVERTIR CADENAS DE TEXTO A AUDIO Y REPRODUCIRLAS 
 def texto_a_audio(comando):
     palabra = pyttsx3.init()
     palabra.say(comando)
     palabra.runAndWait()
 
-#CAPTURA AUDIO DESDE EL MICROFONO Y ANALIZA POSIBLES ERRORES
+# (NO TOCAR) CAPTURA AUDIO DESDE EL MICROFONO Y ANALIZA POSIBLES ERRORES
 def capturar_voz(reconocer, microfono, tiempo_ruido = 1.0):
     if not isinstance(reconocer, sr.Recognizer):
         raise TypeError("'reconocer' no es de la instacia 'Recognizer'")
@@ -26,7 +26,6 @@ def capturar_voz(reconocer, microfono, tiempo_ruido = 1.0):
     with microfono as fuente:
         reconocer.adjust_for_ambient_noise(fuente, duration = tiempo_ruido)
         audio = reconocer.listen(fuente)
-
     respuesta = {
         "suceso": True,
         "error": None,
@@ -40,11 +39,11 @@ def capturar_voz(reconocer, microfono, tiempo_ruido = 1.0):
     except sr.UnknownValueError:
         respuesta["error"] = "Habla inteligible"
     return respuesta
-#Adicional - Escribe en consola y el bot lo lee
+# (NO TOCAR) Adicional - Escribe en consola y el bot lo lee
 def consolesay(str):
     print(str+"\n")
     texto_a_audio(str)
-#CONVIERTE A UNA CADENA DE TEXTO EN MINUSCULA EL AUDIO ENVIADO POR MICROFONO
+# (NO TOCAR) CONVIERTE A UNA CADENA DE TEXTO EN MINUSCULA EL AUDIO ENVIADO POR MICROFONO
 def enviar_voz():
     while (1):
         palabra = capturar_voz(recognizer, microphone)
@@ -57,18 +56,16 @@ def enviar_voz():
         consolesay("No pude escucharte, ¿podrias repetirlo?")
     return palabra["mensaje"].lower()
 
-#BASE DE DATOS DONDE SE ENCUENTRA TODA LA INFORMACION CONCERNIENTE
+# (NO TOCAR) BASE DE DATOS DONDE SE ENCUENTRA TODA LA INFORMACION CONCERNIENTE
 
 with open('basedatos.json', 'r') as archivo:
     datos = json.load(archivo)
-
 #Acceder a la parte especifica que se desea imprimir
-
-#VARIABLES PARA MEJORAR EL CODIGO - ANTHONY
+# (MODIFICABLE) VARIABLES PARA MEJORAR EL CODIGO - ANTHONY
 opciones = "\n1) Lectura\n 2) Decodificacion\n 3) Ejecucion \n 4) Almacenamiento\n 5) Ejemplos"
 mainMenu = "\n1) Aprendizaje\n2) Test\n3) Juegos\n"
 siono = "Responde con:\n1) Esta bien.\n2) No gracias"
-#Funciones - Anthony para evitar la reutilizacion de codigo
+# (MODIFICABLE) Funciones - Anthony para evitar la reutilizacion de codigo
 def continuar(menu):
     consolesay("¿Quieres seguir aprendiendo?")
     time.sleep(0.5)
