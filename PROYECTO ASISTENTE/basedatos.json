@@ -1,10 +1,9 @@
 {
-    "bienvenida": ["Hola. Soy tu Asistente Virtual. Fui creada para instruirte todo respecto a la Estructura de un computador. Antes de empezar ¿Podrias decirme tu nombre?"],
+    "bienvenida": ["Hola. Soy tu Asistente Virtual. Fui creada para instruirte todo respecto a la Ejecucion de instrucciones. Antes de empezar ¿Podrias decirme tu nombre?"],
     
-    "aprendizaje": ["Un computador es un sistema secuencial sincrono complejo que procesa informacion. La informacion dentro del ordenador se trata de forma binaria, utilizando solamente los digitos o valores logicos uno y cero, al contrario que el sistema metrico decimal habitual formado por digitos del cero al nueve.", 
-                     "Para empezar a describir la estructura basica de un computador, cabe definir las funciones que se espera que pueda realizar una maquina denominada como tal. En terminos generales un computador tiene que realizar tres funciones: ",
-                     "Procesamiento de datos. Almacenamiento de datos. Transferencia de datos",
-                     "El computador debe procesar datos, transformando la informacion recibida. Asi mismo debe almacenar datos. tanto resultados de computaciones intermedias, como el resultado final de estas. De la misma manera el computador debe realizar transferencia de datos entre su entorno y el mismo. Para realizar estas tres funciones es necesario un mecanismo de control que gobierne el flujo de datos entre los diversos modulos."],
+    "aprendizaje": ["Los computadores son sistemas sincronizados que operan con una instruccion de reloj. Las operaciones basicas, que son transferencias de datos dentro de la CPU, tienen una duracion minima determinada por el tiempo entre dos flancos consecutivos de la instruccion de reloj. Cuando un computador ejecuta una instruccion, sigue un orden especifico de operaciones basicas. En un mismo periodo de la instruccion de reloj, se pueden realizar varias operaciones basicas en paralelo, siempre y cuando no interfieran al compartir recursos como buses o elementos internos del procesador.",
+
+    "Las instrucciones tipicas que ejecuta un computador suelen dividirse en cuatro fases. Cada fase tiene una duracion mayor que un ciclo de la senal de reloj y contiene una serie de operaciones basicas que pueden ejecutarse en paralelo o en serie. Las fases que componen una instruccion son"],
     
     
     "unidad central de proceso": ["La unidad central de proceso controla el funcionamiento de todos los elementos del computador. Controla el flujo de datos, los procesa, y gobierna el secuenciamiento y las acciones en todo el sistema.",

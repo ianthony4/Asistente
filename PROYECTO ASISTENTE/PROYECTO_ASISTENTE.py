@@ -103,8 +103,8 @@ if __name__ == "__main__":
             print("Muy bien, empecemos entonces.")
             texto_a_audio("Muy bien, empecemos entonces.")
 
-            print("Antes de empezar quisiera hacer una introduccion a la estructura de computadores.")
-            texto_a_audio("Antes de empezar quisiera hacer una introduccion a la estructura de computadores.")
+            print("Antes de empezar quisiera hacer una introduccion a la Ejecución de Instruciones.")
+            texto_a_audio("Antes de empezar quisiera hacer una introduccion a la Ejecución de Instruciones.")
             time.sleep(0.5)
 
             class ImageWindow:
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
             def main():
                 root = tk.Tk()
-                image_path = "computador.jpg"  # Ruta de la imagen que deseas abrir
+                image_path = "intro.png"  # Ruta de la imagen que deseas abrir
                 
                 image_window = ImageWindow(root, image_path)
                 image_window.update()  # Iniciar la función de actualización
