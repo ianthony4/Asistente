@@ -1,37 +1,25 @@
 {
     "bienvenida": ["Hola. Soy tu Asistente Virtual. Fui creada para instruirte todo respecto a la Ejecucion de instrucciones. Antes de empezar ¿Podrias decirme tu nombre?"],
     
-    "aprendizaje": ["Los computadores son sistemas sincronizados que operan con una instruccion de reloj. Las operaciones basicas, que son transferencias de datos dentro de la CPU, tienen una duracion minima determinada por el tiempo entre dos flancos consecutivos de la instruccion de reloj. Cuando un computador ejecuta una instruccion, sigue un orden especifico de operaciones basicas. En un mismo periodo de la instruccion de reloj, se pueden realizar varias operaciones basicas en paralelo, siempre y cuando no interfieran al compartir recursos como buses o elementos internos del procesador.",
+    "aprendizaje": ["Los computadores son sistemas sincronizados que operan con una instruccion de reloj. Las operaciones basicas, que son transferencias de datos dentro de la CPU, tienen una duracion minima determinada por el tiempo entre dos flancos consecutivos de la instruccion de reloj. Cuando un computador ejecuta una instruccion, sigue un orden especifico de operaciones basicas. En un mismo periodo de la instruccion de reloj, se pueden realizar varias operaciones basicas en paralelo, siempre y cuando no interfieran al compartir recursos como buses o elementos internos del procesador."],
+    
+    "fases":["Como se puede apreciar en la imagen, Las instrucciones tipicas que ejecuta un computador suelen dividirse en cuatro fases. Cada fase tiene una duracion mayor que un ciclo de la senal de reloj y contiene una serie de operaciones basicas que pueden ejecutarse en paralelo o en serie. Las fases que componen una instruccion son: Lectura. Decodificacion. Ejecucion. Almacenamiento."],
+    
+    "lectura":["La fase de lectura de instruccion es la primera fase del ciclo de instruccion de un procesador. En esta fase, el procesador busca la instruccion en la memoria. El primer paso es cargar el registro MAR con el contenido del registro PC. Luego, el procesador activa las senales de lectura de la memoria y guarda el dato en el registro MDR. Finalmente, el procesador transfiere el dato al registro IR. Este proceso se realiza dos veces en el ejemplo del computador porque las instrucciones son de 16 bits, mientras que los buses externos de datos y la memoria se consideran con una longitud de palabra de 8 bits."],
+    
+    "decodificacion":["En esta fase, la CPU interpreta la instruccion almacenada en el registro IR. La decodificacion implica entender que operacion se debe realizar y que datos se necesitan. Ademas, en esta etapa, se determinan las ubicaciones de memoria o registros donde se encuentran los operandos. La CPU puede cargar los operandos en registros internos para su posterior procesamiento."],
+    
+    "ejecucion":["Una vez que la CPU ha decodificado la instruccion y ha adquirido los operandos, se procede a realizar la operacion indicada por la instruccion. Esto puede implicar operaciones aritmeticas, logicas o de transferencia de datos. En esta fase, los datos se procesan y se generan los resultados de acuerdo con la operacion especificada."],
+    
+    "almacenamiento":["Finalmente, en esta fase, los resultados de la operacion se almacenan en la ubicacion adecuada, que puede ser en la memoria, en registros internos o en otro lugar. Ademas, si es necesario actualizar el estado de los registros, se realiza en esta etapa. Esto asegura que los resultados esten disponibles para instrucciones posteriores o para la transferencia a dispositivos de salida, si es necesario."],
 
-    "Las instrucciones tipicas que ejecuta un computador suelen dividirse en cuatro fases. Cada fase tiene una duracion mayor que un ciclo de la senal de reloj y contiene una serie de operaciones basicas que pueden ejecutarse en paralelo o en serie. Las fases que componen una instruccion son"],
-    
-    
-    "unidad central de proceso": ["La unidad central de proceso controla el funcionamiento de todos los elementos del computador. Controla el flujo de datos, los procesa, y gobierna el secuenciamiento y las acciones en todo el sistema.",
-                                  "Una CPU básica consta principalmente de las siguientes unidades","Unidad de Control UC. Unidad Aritmetico Logica ALU. Registros internos",
-                                  "La UNIDAD DE CONTROL UC, se encarga de leer de la memoria las instrucciones que se debe ejecutar y de secuenciar el acceso a los datos y las operaciones a realizar por la unidad de proceso. Se encarga de acceder a memoria habilitando un camino de datos para que las instrucciones y los datos lleguen a la CPU.",
-                                  "La Unidad Aritmetico Logica ALU, es la parte de la CPU encargada de realizar las transformaciones de los datos. La ALU consta de una serie de modulos que permiten realizar operaciones aritmeticas y logicas.",
-                                  "Los registros internos son pequeñas memorias de alta velocidad dentro de un computador que se utilizan para almacenar datos temporales y realizar operaciones rapidas."],
-    "memoria": ["En la memoria se almacenaran el programa y los datos que, provenientes de un dispositivo de Entrada Salida o dispositivos de almacenamiento secundario, va a ejecutar la CPU. La matriz de memoria está organizada en palabras, cada una de las cuales tiene asignada una direccion que indica su posicion en la matriz.",
-                "La memoria en un computador es un dispositivo electrónico que almacena temporalmente programas y datos que están siendo utilizados por el procesador, para acceder a ellos más rapidamente."],
-    "entrada salida": ["Un computador tiene una gran cantidad de dispositivos de entrada y salida. Desde un teclado hasta un monitor de video, pasando por un disco duro, todos son dispositivos que la CPU necesita para obtener datos o para almacenar o mostrar resultados.",
-                       "El principal problema de estos dispositivos perifericos es su gran variedad. Muchos de ellos comunican a un operador humano con el computador y otros sirven de conexion con otros computadores.",
-                       "El objetivo de cada transferencia es llevar los datos desde el periferico a una zona concreta de la memoria y viceversa."],  
-    "sistemas de interconexión buses": ["La conexion entre los diversos componentes de un computador se efectua fisicamente a traves de los buses. Un bus se define como un enlace de comunicacion compartido que usa multiples cables para conectar subsistemas.",
-                                        "Cada linea es capaz de transmitir una tensión electrica que representa un uno o un cero binario.",
-                                        "Las señales de los buses estan agrupadas siguiendo un criterio de funcionalidad:",
-                                        "Bus de datos. Bus de direcciones. Bus de control. Bus de alimentacion",
-                                        "Los buses de datos son las iineas por las que se transmiten los datos entre los diversos dispositivos que forman el computador.",
-                                        "Los buses de direcciones sirven para indicar a la memoria o al resto de dispositivos la posicion del dato que se quiere acceder.",
-                                        "Los buses de control agrupan todas las señales de control que gobiernan el acceso al bus de datos y direcciones. Agrupa señales de lectura, escritura, arbitraje, entre otros.",
-                                        "Los buses de alimentacion son los cables o conexiones que suministran energia electrica a los componentes internos del equipo, como la placa madre, la CPU, las tarjetas de expansion y los dispositivos de almacenamiento."],
-    "perifericos": ["Los perifericos son todos aquellos dispositivos que sin ser imprescindibles en la estructura de un computador, son necesarios para suministrar datos a la maquina o visualizar los resultados.",
-                    "Los periféricos de entrada de datos son interruptores, teclados, ratones, pantallas graficas interactivas y digitalizadores de imagenes (escaners)."],
     "PE PREGUNTA 01": ["PRIMERA PREGUNTA: ¿Cual es el objetivo principal del pensamiento computacional?",
-                       "a) Resolver problemas utilizando algoritmos y abstraccion. b) Programar robots y sistemas autonomos. c) Diseñar hardware de computadoras."],
+                        "a) Resolver problemas utilizando algoritmos y abstraccion. b) Programar robots y sistemas autonomos. c) Diseñar hardware de computadoras."],
     "PE PREGUNTA 02": ["SEGUNDA PREGUNTA: 2. El primer paso del pensamiento computacional es: identificar el problema.",
-                       "¿VERDADERO? o ¿FALSO?"],
+                        "¿VERDADERO? o ¿FALSO?"],
     "PE PREGUNTA 03": ["TERCERA PREGUNTA: ¿Qué es un algoritmo en terminos de pensamiento computacional?",
-                       "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"]
+                        "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"]
+    
 }
 
 
