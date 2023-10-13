@@ -58,12 +58,14 @@ def enviar_voz():
 
 # (NO TOCAR) BASE DE DATOS DONDE SE ENCUENTRA TODA LA INFORMACION CONCERNIENTE
 
-with open('basedatos.json', 'r') as archivo:
+with open('basedatos.json', 'r', encoding='utf-8') as archivo:
     datos = json.load(archivo)
 #Acceder a la parte especifica que se desea imprimir
 # (MODIFICABLE) VARIABLES PARA MEJORAR EL CODIGO - ANTHONY
 opciones = "\n1) Lectura\n 2) Decodificacion\n 3) Ejecucion \n 4) Almacenamiento\n 5) Ejemplos"
 mainMenu = "\n1) Aprendizaje\n2) Test\n3) Juegos\n"
+menu2 = "\n1) Cronograma instruccion agregar (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
+menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
 siono = "Responde con:\n1) Esta bien.\n2) No gracias"
 # (MODIFICABLE) Funciones - Anthony para evitar la reutilizacion de codigo
 def continuar(menu):
@@ -95,21 +97,21 @@ if __name__ == "__main__":
     salir = False
 
     #USANDO LA FUNCIÓN TEXTO_A_AUDIO SE HACE LEER CADENAS DE TEXTO, COMO SI LA COMPUTADORA TE ESTUVIERA HABLANDO
-    texto_a_audio(datos['bienvenida'])
+    #texto_a_audio(datos['bienvenida'])
     print("Di tu nombre: ")
     #LA FUNCION 'enviar_voz' RETORNA UNA CADENA DE TEXTO DEL AUDIO ENVIADO POR VOZ DEL USUARIO
     nombre = enviar_voz()
     consolesay("Hola {}. Mucho gusto.".format(nombre))
-    consolesay("{} Ahora voy a explicarte sobre las opciones que tiene este programa. Tienes 3 opciones para escoger.".format(nombre))
-    print("\n 1) Aprendizaje\n 2) Tests\n 3) Juegos\n")
-    texto_a_audio("Aprendizaje. Tests. Juegos.")
-    consolesay("La opción Aprendizaje es donde podrás aprender todo con respecto a la "+tema+". La opción Tests es donde podrás poner en práctica lo que aprendiste mediante exámenes. Y por último, la tercer opción, es Juegos, donde tambien podrás demostrar lo que aprendiste jugando.")
+    #consolesay("{} Ahora voy a explicarte sobre las opciones que tiene este programa. Tienes 3 opciones para escoger.".format(nombre))
+    #print("\n 1) Aprendizaje\n 2) Tests\n 3) Juegos\n")
+    #texto_a_audio("Aprendizaje. Tests. Juegos.")
+    #consolesay("La opción Aprendizaje es donde podrás aprender todo con respecto a la "+tema+". La opción Tests es donde podrás poner en práctica lo que aprendiste mediante exámenes. Y por último, la tercer opción, es Juegos, donde tambien podrás demostrar lo que aprendiste jugando.")
     consolesay("¿Qué opción eliges?")
-    time.sleep(0.5)
-    texto_a_audio("¿Aprendizaje? ¿Tests? ¿Juegos?")
+    time.sleep(0.1)
+    #texto_a_audio("¿Aprendizaje? ¿Tests? ¿Juegos?")
     #SE USA LA FUNCION SLEEP DE LA LIBRERIA TIME PARA PAUSAR UN TIEMPO LA EJECUCION DEL PROGRAMA
     #PARA QUE LA INTERACCION SEA MAS NATURAL
-    time.sleep(0.5)
+    time.sleep(0.1)
     #PREGUNTA AL USUARIO QUE OPCION ELIGE
     while (1): 
         respuesta = enviar_voz()
@@ -139,7 +141,7 @@ if __name__ == "__main__":
                 root.mainloop()
             if __name__ == "__main__":
                 main()
-            texto_a_audio(datos['aprendizaje'])           
+            #texto_a_audio(datos['aprendizaje'])           
             def mostrarImagen(str): #Método para mostrar imagen probara usando .png o .jpg
                 extension = ".jpg"
                 extension2 = ".png"
@@ -154,7 +156,7 @@ if __name__ == "__main__":
                 mostrarImagen(str)
                 texto_a_audio(datos[str])
             #FASES
-            ejecutar("fases")
+            ############ejecutar("fases")
             print(opciones)
             #PREGUNTA AL USUARIO CON QUÉ PARTE DESEA EMPEZAR
             while(not salir):
@@ -182,11 +184,54 @@ if __name__ == "__main__":
                         if continuar(opciones):
                             break                           
                     elif respuesta == "ejemplos":
-                        ejecutar(respuesta)
-                        if continuar(opciones):
-                            break  
+                        print(menu2)
+                        while(not salir):
+                            consolesay("¿Por cual deseas empezar estas dentro de ejemplos?")
+                            time.sleep(0.5)
+                            while(1):
+                                respuesta = enviar_voz()
+                                print("Tu respuesta " + respuesta)
+                                #menu2 = "\n1) Cronograma instruccion añadir (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
+                                #menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
+                                if respuesta == "cronograma instrucción agregar":
+                                    #texto_a_audio(datos['add'])
+                                    consolesay(menuadd)
+                                    while(not salir):
+                                        consolesay("¿Por cual deseas empezar?")
+                                        time.sleep(0.5)
+                                        while(1):
+                                            respuesta = enviar_voz()
+                                            print("Tu respuesta " + respuesta)
+                                            if respuesta == "fase de búsqueda":
+                                                ejecutar("busqueda")
+                                                if continuar(menuadd):
+                                                    break
+                                            elif respuesta == "fase de búsqueda de operandos":
+                                                ejecutar("operandos")
+                                                if continuar(menuadd):
+                                                    break
+                                            elif respuesta == "fase de ejecución y almacenamiento del resultado":
+                                                ejecutar("ejecalmc")
+                                                if continuar(menuadd):
+                                                    break
+                                        break
+                                    if continuar(menu2):
+                                        break
+                                elif respuesta == "ejecución de la instrucción sw":
+                                    ejecutar("sw")
+                                    if continuar(menu2):
+                                        break
+                                elif respuesta == "ejecución de la instrucción jwz": 
+                                    ejecutar("jwz")
+                                    if continuar(menu2):
+                                        break  
+                                    
+                                break
+                            if continuar(opciones):
+                                break                      
+
             break
-        
+        ###### PARTE 2 - TEST ######  
         elif respuesta == "test":
             consolesay("Elegiste la opción TEST.")
             consolesay("En esta opción tienes para elegir en dar una prueba de entrada sobre PENSAMIENTO COMPUTACIONAL, o dar un examen sobre "+tema+".")
