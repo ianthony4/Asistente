@@ -19,6 +19,16 @@
                         "¿VERDADERO? o ¿FALSO?"],
     "PE PREGUNTA 03": ["TERCERA PREGUNTA: ¿Qué es un algoritmo en terminos de pensamiento computacional?",
                         "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"],
+    "EJ PREGUNTA 01": {
+        "pregunta": ["¿Qué función realiza la fase de \"Búsqueda de Operandos\" en la ejecución de una instrucción en una computadora?"],
+        "alternativas": ["Decodificar la instrucción", "Leer la instrucción desde la memoria", "Obtener los operandos necesarios para la instrucción", "Almacenar los resultados de la instrucción"],
+        "respuesta": ["Obtener los operandos necesarios para la instrucción"]
+    },
+    "EJ PREGUNTA 02": {
+        "pregunta": ["En una instrucción JMZ #456, el programa saltará a la dirección de memoria \"#456\" si el indicador de cero (Z) en el registro de estado está activo."],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Verdadero"]
+    },
     "add":["Primera etapa: Se copia la direccion de la instruccion en el registro de direcciones MAR.",
     "Segunda etapa: Se aumenta la direccion en el registro PC para apuntar a la proxima instruccion.",
     "Tercera etapa: Se lee la parte baja de la instruccion en la memoria y se almacena en el registro MDR.",

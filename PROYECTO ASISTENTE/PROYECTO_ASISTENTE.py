@@ -120,6 +120,50 @@ def not_recognized():
     consolesay("Responde con una de las alternativas mencionadas.")
     return False
 
+# Aspectos necesarios para la fase TEST
+# Variables para la fase TEST
+puntos = 0
+
+# Métodos para la fase de test
+def aumentarPuntos():
+    global puntos
+    puntos += 1
+    print("TU PUNTAJE ES DE " + str(puntos) + " PUNTO/s")
+                    
+def escribir_respuesta(pregunta, alternativas, respuesta_correcta):
+    print(pregunta)
+    for i, alternativa in enumerate(alternativas, start = 1):
+        print(f"{i}. {alternativa}")        
+    respuesta_usuario = input("Escribe el número de la alternativa que crees correcta: ")
+    if respuesta_usuario.isdigit():
+        opcion_elegida = int(respuesta_usuario)
+    else:
+        print("Entrada inválida. Por favor, ingresa el número de la alternativa.")
+        return
+
+    if not 1 <= opcion_elegida <= len(alternativas):
+        print("Opción inválida.")
+        return
+                        
+    if alternativas[opcion_elegida - 1] == respuesta_correcta:
+        consolesay("¡Respuesta correcta!")
+        aumentarPuntos()
+    else:
+        consolesay("Respuesta incorrecta.")
+
+def mostrar_pregunta(enunciado):
+    consolesay(enunciado["pregunta"][0])
+    for i, alternativa in enumerate(enunciado["alternativas"], start = 0):
+        print(f"{chr(97 + i)}) {alternativa}")
+    respuesta_usuario = enviar_voz()
+    print("Tu respuesta " + respuesta_usuario)
+    if respuesta_usuario.lower() == enunciado["respuesta"][0].lower():
+        consolesay("¡Respuesta correcta!")
+        aumentarPuntos()
+    else:
+        consolesay("Respuesta incorrecta")
+    
+        
 
 #INICIO
 if __name__ == "__main__":
@@ -145,7 +189,7 @@ if __name__ == "__main__":
     time.sleep(0.1)
     #PREGUNTA AL USUARIO QUE OPCION ELIGE
     while (1): 
-        print("\n 1) Aprendizaje\n 2) Tests\n 3) Juegos\n")
+        print(mainMenu)
         respuesta = enviar_voz()
         print("Tu respuesta " + respuesta)
         if respuesta == "aprendizaje": 
@@ -211,7 +255,6 @@ if __name__ == "__main__":
                         print(menu2)
                         consolesay("¿Por cual deseas empezar estas dentro de ejemplos?")
                         time.sleep(0.5)
-                        
                         respuesta = enviar_voz()
                         print("Tu respuesta " + respuesta)
                         #menu2 = "\n1) Cronograma instruccion añadir (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
@@ -272,79 +315,82 @@ if __name__ == "__main__":
             consolesay("Elegiste la opción TEST.")
             consolesay("En esta opción tienes para elegir en dar una prueba de entrada sobre PENSAMIENTO COMPUTACIONAL, o dar un examen sobre "+tema+".")
             consolesay("¿Cuál eliges?")
-            texto_a_audio("¿Prueba de entrada Pensamiento Computacional? o ¿Examen - Estructura de computadores?")
+            texto_a_audio("¿Prueba de entrada Pensamiento Computacional? o ¿Examen - Ejecución de instrucciones?")
             
             while(not salir):
-                print("\n 1) Prueba de entrada - Pensamiento Computacional\n 2) Examen - Estructura de computadores\n") #Menu de Test (Por trabajar)
+                print("\n 1) Prueba de entrada - Pensamiento Computacional\n 2) Ejecución de instrucciones\n") #Menu de Test (Por trabajar)
                 consolesay("¿Por cual deseas empezar?")
                 time.sleep(0.5)
-                #COMPRUEBA QUE EL MENSAJE ENVIADO SEA VALIDO
-                while (1):     
+                #COMPRUEBA QUE EL MENSAJE ENVIADO SEA VALIDO    
+                respuesta = enviar_voz()
+                print("Tu respuesta " + respuesta)
+                if respuesta == "prueba de entrada pensamiento computacional":
+                    consolesay("Escogiste: Prueba de entrada de Pensamiento Computacional")
+                    consolesay("Empezemos con la prueba:")
+                    print("------------------------------------------------------------------------------------")
+                    texto_a_audio(datos['PE PREGUNTA 01'])
+                    print("PRIMERA PREGUNTA: 1. ¿Cuál es el objetivo principal del pensamiento computacional?")
+                    print("     \na) Resolver problemas utilizando algoritmos y abstracción.     \nb) Programar robots y sistemas autónomos.     \nc) Diseñar hardware de computadoras.\n")
+                    consolesay("¿Cual es tu respuesta?")
+                    texto_a_audio("¿a? ¿b? o ¿c?")
                     respuesta = enviar_voz()
-                    if respuesta == "prueba de entrada pensamiento computacional":
-                        print("Tu respuesta " + respuesta)
-                        consolesay("Escogiste: Prueba de entrada de Pensamiento Computacional")
-                        consolesay("Empezemos con la prueba:")
-                        print("------------------------------------------------------------------------------------")
-                        texto_a_audio(datos['PE PREGUNTA 01'])
-                        print("PRIMERA PREGUNTA: 1. ¿Cuál es el objetivo principal del pensamiento computacional?")
-                        print("     \na) Resolver problemas utilizando algoritmos y abstracción.     \nb) Programar robots y sistemas autónomos.     \nc) Diseñar hardware de computadoras.\n")
-                        consolesay("¿Cual es tu respuesta?")
-                        texto_a_audio("¿a? ¿b? o ¿c?")
-                        respuesta = enviar_voz()
-                        print("Tu respuesta " + respuesta)
-                        puntos = 0 #Puntaje del usuario
-                        def aumentarPuntos():
-                            puntos+=1
-                            print("TU PUNTAJE ES DE "+puntos+" PUNTO/s")
-                        if respuesta == "a":
-                            consolesay("Tu respuesta es correcta. Muy bien.")
-                            aumentarPuntos()
-                        elif respuesta == "b" or respuesta =="c":
-                            consolesay("Tu respuesta es incorrecta.")
-                        time.sleep(0.5)
-                        print("------------------------------------------------------------------------------------")
-                        texto_a_audio(datos['PE PREGUNTA 02'])
-                        print("SEGUNDA PREGUNTA: 2. El primer paso del pensamiento computacional es: identificar el problema.")
-                        print("     \na) V     \nb) F\n")
-                        consolesay("¿Cual es tu respuesta?")
-                        respuesta = enviar_voz()
-                        print("Tu respuesta " + respuesta)
-                        if respuesta == "verdadero":
-                            consolesay("Tu respuesta es correcta. Muy bien.")
-                            aumentarPuntos()
-                        elif respuesta == "falso":
-                            consolesay("Tu respuesta es incorrecta.")
-                        print("------------------------------------------------------------------------------------")
-                        def escribir_respuesta(pregunta, alternativas, respuesta_correcta):
-                            print(pregunta)
-                            for i, alternativa in enumerate(alternativas, start = 1):
-                                print(f"{i}. {alternativa}")
+                    print("Tu respuesta " + respuesta)
                     
-                            respuesta_usuario =input("Escribe el número de la alternativa que crees correcta: ")
-
-                            if respuesta_usuario.isdigit():
-                                opcion_elegida = int(respuesta_usuario)
-                                if 1 <= opcion_elegida <= len(alternativas):
-                                    if alternativas[opcion_elegida - 1] == respuesta_correcta:
-                                        consolesay("¡Respuesta correcta!")
-                                        aumentarPuntos()
-                                    else:
-                                        consolesay("Respuesta incorrecta.")
-                                else:
-                                    print("Opción inválida.")
-                            else:
-                                print("Entrada inválida. Por favor, ingresa el número de la alternativa.")
-
-                        pregunta = "¿Qué es un algoritmo en términos de pensamiento computacional?"
+                    if respuesta == "a":
+                        consolesay("Tu respuesta es correcta. Muy bien.")
+                        aumentarPuntos()
+                    elif respuesta == "b" or respuesta =="c":
+                        consolesay("Tu respuesta es incorrecta.")
+                    else:
+                        not_recognized()
+                    time.sleep(0.5)
+                    print("------------------------------------------------------------------------------------")
+                    texto_a_audio(datos['PE PREGUNTA 02'])
+                    print("SEGUNDA PREGUNTA: 2. El primer paso del pensamiento computacional es: identificar el problema.")
+                    print("     \na) V     \nb) F\n")
+                    consolesay("¿Cual es tu respuesta?")
+                    respuesta = enviar_voz()
+                    print("Tu respuesta " + respuesta)
+                    if respuesta == "verdadero":
+                        consolesay("Tu respuesta es correcta. Muy bien.")
+                        aumentarPuntos()
+                    elif respuesta == "falso":
+                        consolesay("Tu respuesta es incorrecta.")
+                    else:
+                        not_recognized()
+                    print("------------------------------------------------------------------------------------")
                         
-                        texto_a_audio(datos['PE PREGUNTA 03'])
-                        print("TERCERA PREGUNTA: ¿Qué es un algoritmo en términos de pensamiento computacional?")
-                        alternativas = ["Un patrón de diseño visual","Un lenguaje de programación", "Una secuencia de pasos para resolver un problema", "Una representación gráfica de datos"]
-                        respuesta_correcta ="Una secuencia de pasos para resolver un problema"
-                        escribir_respuesta(pregunta, alternativas, respuesta_correcta)       
-                        if continuar(mainMenu):
-                            break
+                    pregunta = "¿Qué es un algoritmo en términos de pensamiento computacional?"
+                        
+                    texto_a_audio(datos['PE PREGUNTA 03'])
+                    print("TERCERA PREGUNTA: ¿Qué es un algoritmo en términos de pensamiento computacional?")
+                    alternativas = ["Un patrón de diseño visual","Un lenguaje de programación", "Una secuencia de pasos para resolver un problema", "Una representación gráfica de datos"]
+                    respuesta_correcta ="Una secuencia de pasos para resolver un problema"
+                    escribir_respuesta(pregunta, alternativas, respuesta_correcta)
+                    if still():
+                        continue
+                    else:
+                        break
+                        
+                elif respuesta == "ejecución de instrucciones":
+                    print("------------------------------------------------------------------------------------")
+                    consolesay("EJ PREGUNTA 01")
+                    mostrar_pregunta(datos["EJ PREGUNTA 01"])
+                    print("------------------------------------------------------------------------------------")
+                    consolesay("EJ PREGUNTA 02")
+                    mostrar_pregunta(datos["EJ PREGUNTA 02"])
+                
+                else:
+                    not_recognized()
+                    continue
+                    
+                if still():
+                    continue
+                else:
+                    break
+            # Para repetir el menu de aprendizaje, test, juegos
+            continue
+
         ###### PARTE 3 - JUEGOS ######                
         elif respuesta == "juegos":
             consolesay("Elegiste la opción JUEGOS.")
@@ -377,7 +423,7 @@ if __name__ == "__main__":
                     self.question_label.config(text=question)
                     self.correct_answer = 0  # Respuesta correcta en la posición 0 (RAM)
                     for i in range(4):
-                        image_path = f"option_{i+1}.png"
+                        image_path = f"imgs/option_{i+1}.png"
                         image = Image.open(image_path)
                         image = image.resize((200, 200))
                         photo = ImageTk.PhotoImage(image)
@@ -397,5 +443,4 @@ if __name__ == "__main__":
                 root.mainloop()
         #SI EL MENSAJE ENVIADO NO ES ERRONEO LE PIDE AL USUARIO SELECCIONAR UNA OPCION VALIDA
         else:
-            consolesay(nombre + " creo que no has respondido con alguna de las instrucciones indicadas anteriormente")
-            consolesay("Responde con una de las alternativas mencionadas.")
+            not_recognized()
