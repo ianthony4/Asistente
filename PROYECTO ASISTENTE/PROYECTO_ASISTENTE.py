@@ -66,7 +66,7 @@ opciones = "\n1) Lectura\n 2) Decodificacion\n 3) Ejecucion \n 4) Almacenamiento
 mainMenu = "\n1) Aprendizaje\n2) Test\n3) Juegos\n"
 menu2 = "\n1) Cronograma instruccion agregar (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
 menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
-siono = "Responde con:\n1) Esta bien.\n2) No gracias"
+siono = "Responde con:\n1) Bien.\n2) Regresar \n3) No gracias"
 # (MODIFICABLE) Funciones - Anthony para evitar la reutilizacion de codigo
 def continuar(menu):
     consolesay("¿Quieres seguir aprendiendo?")
@@ -75,7 +75,7 @@ def continuar(menu):
     respuesta = enviar_voz()
     print("Tu respuesta " + respuesta)
     #COMPRUEbA QUE EL MENSAJE ENVIADO SEA VALIDO
-    if respuesta == "está bien": 
+    if respuesta == "bien": 
         #ELEGIMOS CON QUÉ OPCIÓN SEGUIR
         consolesay("Elige la opcion que desees aprender: ")
         print(menu)
@@ -89,6 +89,38 @@ def continuar(menu):
     else:
         consolesay(nombre + " creo que no has respondido con alguna de las instrucciones indicadas anteriormente")
         print(siono)
+
+def still():
+    consolesay("¿Quieres seguir aprendiendo?")
+    time.sleep(0.5)
+    print(siono)
+    respuesta = enviar_voz()
+    print("Tu respuesta " + respuesta)
+    #COMPRUEbA QUE EL MENSAJE ENVIADO SEA VALIDO
+    if respuesta == "bien": 
+        #ELEGIMOS CON QUÉ OPCIÓN SEGUIR
+        consolesay("Elige la opcion que desees aprender: ")
+        return True
+    elif respuesta == "regresar": 
+        #ELEGIMOS CON QUÉ OPCIÓN SEGUIR
+        consolesay("Elige la opcion que desees aprender: ")
+        return False
+    elif respuesta == "no gracias":
+        consolesay("Oh. es una lástima. En ese caso nos veremos en otra ocasión")                        
+        time.sleep(0.5)
+        consolesay("Espero que hayas aprendido mucho sobre este tema. Hasta luego.")
+        exit(0)
+    #SI EL MENSAJE ENVIADO NO ES ERRONEO LE PIDE AL USUARIO SELECCIONAR UNA OPCION VALIDA
+    else:
+        not_recognized()
+        print(siono)
+
+def not_recognized():
+    consolesay(nombre + " creo que no has respondido con alguna de las instrucciones indicadas anteriormente")
+    consolesay("Responde con una de las alternativas mencionadas.")
+    return False
+
+
 #INICIO
 if __name__ == "__main__":
 
@@ -103,7 +135,6 @@ if __name__ == "__main__":
     nombre = enviar_voz()
     consolesay("Hola {}. Mucho gusto.".format(nombre))
     #consolesay("{} Ahora voy a explicarte sobre las opciones que tiene este programa. Tienes 3 opciones para escoger.".format(nombre))
-    #print("\n 1) Aprendizaje\n 2) Tests\n 3) Juegos\n")
     #texto_a_audio("Aprendizaje. Tests. Juegos.")
     #consolesay("La opción Aprendizaje es donde podrás aprender todo con respecto a la "+tema+". La opción Tests es donde podrás poner en práctica lo que aprendiste mediante exámenes. Y por último, la tercer opción, es Juegos, donde tambien podrás demostrar lo que aprendiste jugando.")
     consolesay("¿Qué opción eliges?")
@@ -114,6 +145,7 @@ if __name__ == "__main__":
     time.sleep(0.1)
     #PREGUNTA AL USUARIO QUE OPCION ELIGE
     while (1): 
+        print("\n 1) Aprendizaje\n 2) Tests\n 3) Juegos\n")
         respuesta = enviar_voz()
         print("Tu respuesta " + respuesta)
         if respuesta == "aprendizaje": 
@@ -157,89 +189,93 @@ if __name__ == "__main__":
                 texto_a_audio(datos[str])
             #FASES
             ############ejecutar("fases")
-            print(opciones)
             #PREGUNTA AL USUARIO CON QUÉ PARTE DESEA EMPEZAR
             while(not salir):
+                print(opciones)
                 consolesay("¿Por cual deseas empezar?")
                 time.sleep(0.5)
                 #COMPRUEBA QUE EL MENSAJE ENVIADO SEA VALIDO
-                while (1):
-                    respuesta = enviar_voz()
-                    print("Tu respuesta " + respuesta)
-                    if respuesta == "lectura":
-                        ejecutar(respuesta)
-                        #Si o No para continuar
-                        if continuar(opciones):
-                            break                      
-                    elif respuesta == "decodificación": 
-                        ejecutar("decodificacion") #No posible por la coma
-                        if continuar(opciones):
-                            break
-                    elif respuesta == "ejecución":
-                        ejecutar("ejecucion") #No posible por la coma
-                        if continuar(opciones):
-                            break                    
-                    elif respuesta == "almacenamiento":
-                        ejecutar(respuesta)
-                        if continuar(opciones):
-                            break                           
-                    elif respuesta == "ejemplos":
+                respuesta = enviar_voz()
+                print("Tu respuesta " + respuesta)
+                if respuesta == "lectura":
+                    ejecutar(respuesta)
+                    #Si o No para continuar                     
+                elif respuesta == "decodificación": 
+                    ejecutar("decodificacion") #No posible por la coma
+                elif respuesta == "ejecución":
+                    ejecutar("ejecucion") #No posible por la coma       
+                elif respuesta == "almacenamiento":
+                    ejecutar(respuesta)
+                elif respuesta == "ejemplos":
+                    while(not salir):
                         print(menu2)
-                        while(not salir):
-                            consolesay("¿Por cual deseas empezar estas dentro de ejemplos?")
-                            time.sleep(0.5)
-                            while(1):
+                        consolesay("¿Por cual deseas empezar estas dentro de ejemplos?")
+                        time.sleep(0.5)
+                        
+                        respuesta = enviar_voz()
+                        print("Tu respuesta " + respuesta)
+                        #menu2 = "\n1) Cronograma instruccion añadir (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
+                        #menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
+                        if respuesta == "cronograma instrucción agregar":
+                            #texto_a_audio(datos['add'])
+                            while(not salir):
+                                consolesay(menuadd)
+                                consolesay("¿Por cual deseas empezar?")
+                                time.sleep(0.5)
                                 respuesta = enviar_voz()
                                 print("Tu respuesta " + respuesta)
-                                #menu2 = "\n1) Cronograma instruccion añadir (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
-                                #menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
-                                if respuesta == "cronograma instrucción agregar":
-                                    #texto_a_audio(datos['add'])
-                                    consolesay(menuadd)
-                                    while(not salir):
-                                        consolesay("¿Por cual deseas empezar?")
-                                        time.sleep(0.5)
-                                        while(1):
-                                            respuesta = enviar_voz()
-                                            print("Tu respuesta " + respuesta)
-                                            if respuesta == "fase de búsqueda":
-                                                ejecutar("busqueda")
-                                                if continuar(menuadd):
-                                                    break
-                                            elif respuesta == "fase de búsqueda de operandos":
-                                                ejecutar("operandos")
-                                                if continuar(menuadd):
-                                                    break
-                                            elif respuesta == "fase de ejecución y almacenamiento del resultado":
-                                                ejecutar("ejecalmc")
-                                                if continuar(menuadd):
-                                                    break
-                                        break
-                                    if continuar(menu2):
-                                        break
-                                elif respuesta == "ejecución de la instrucción sw":
-                                    ejecutar("sw")
-                                    if continuar(menu2):
-                                        break
-                                elif respuesta == "ejecución de la instrucción jwz": 
-                                    ejecutar("jwz")
-                                    if continuar(menu2):
-                                        break  
-                                    
-                                break
-                            if continuar(opciones):
-                                break                      
+                                if respuesta == "fase de búsqueda":
+                                    ejecutar("busqueda")
+                                elif respuesta == "fase de búsqueda de operandos":
+                                    ejecutar("operandos")
+                                elif respuesta == "fase de ejecución y almacenamiento del resultado":
+                                    ejecutar("ejecalmc")
+                                else:
+                                    not_recognized()
+                                    continue
 
-            break
+                                if still():
+                                    continue
+                                else:
+                                    break
+                            # Para repetir el ciclo del "menu2"
+                            continue
+
+                        elif respuesta == "ejecución de la instrucción sw":
+                            ejecutar("sw")
+                        elif respuesta == "ejecución de la instrucción jwz": 
+                            ejecutar("jwz")
+                        else:
+                            not_recognized()
+                            continue
+
+                        if still():
+                            continue
+                        else:
+                            break
+                    # Para repetir el ciclo de "opciones"
+                    continue
+
+                else:
+                    not_recognized()
+                    continue
+                
+                if still():
+                    continue
+                else:
+                    break            
+            # Para repetir el menu de aprendizaje, test, juegos
+            continue
+
         ###### PARTE 2 - TEST ######  
         elif respuesta == "test":
             consolesay("Elegiste la opción TEST.")
             consolesay("En esta opción tienes para elegir en dar una prueba de entrada sobre PENSAMIENTO COMPUTACIONAL, o dar un examen sobre "+tema+".")
             consolesay("¿Cuál eliges?")
-            print("\n 1) Prueba de entrada - Pensamiento Computacional\n 2) Examen - Estructura de computadores\n") #Menu de Test (Por trabajar)
             texto_a_audio("¿Prueba de entrada Pensamiento Computacional? o ¿Examen - Estructura de computadores?")
             
             while(not salir):
+                print("\n 1) Prueba de entrada - Pensamiento Computacional\n 2) Examen - Estructura de computadores\n") #Menu de Test (Por trabajar)
                 consolesay("¿Por cual deseas empezar?")
                 time.sleep(0.5)
                 #COMPRUEBA QUE EL MENSAJE ENVIADO SEA VALIDO
