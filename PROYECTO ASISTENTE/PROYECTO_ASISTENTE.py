@@ -336,7 +336,7 @@ if __name__ == "__main__":
 
                 def load_question(self):
                     # Cargar la pregunta y las imágenes aquí
-                    question = "¿Qué componente almacena datos de manera temporal en la CPU?"
+                    question = "En la fase de decodificación del proceso de ejecución de instrucciones de una computadora, ¿cuál de estas imágenes representa el componente responsable de interpretar las instrucciones, determinar las operaciones a realizar y localizar los datos necesarios? Por favor, selecciona una de las siguientes imágenes."
                     options = ["RAM", "GPU", "HDD", "CPU"]
                     self.question_label.config(text=question)
                     self.correct_answer = 0  # Respuesta correcta en la posición 0 (RAM)
