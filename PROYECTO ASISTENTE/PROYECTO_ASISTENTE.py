@@ -393,41 +393,30 @@ if __name__ == "__main__":
 
         ###### PARTE 3 - JUEGOS ######                
         elif respuesta == "juegos":
-            
-            print("Elegiste la opción JUEGOS.")
-            texto_a_audio("Elegiste la opción JUEGOS.")
-
-            print("El primer juego consta en contestar las preguntas, haciendo click en la imagen que crees que es la respuesta.")
-            texto_a_audio("El primer juego consta en contestar las preguntas, haciendo click en la imagen que crees que es la respuesta.")
+            consolesay("Elegiste la opción JUEGOS.")
+            consolesay("El primer juego consta en contestar las preguntas, haciendo click en la imagen que crees que es la respuesta.")
             class ComputerStructureQuizApp:
                 def __init__(self, root):
                     self.root = root
-                    self.root.title("JUEGO: ESTRUCTURA DE UN COMPUTADOR")
-
+                    self.root.title("JUEGO: EJECUCIÓN DE INSTRUCCIONES")
                     self.question_label = tk.Label(root, text="En la fase de decodificación del proceso de ejecución de instrucciones de una computadora, ¿cuál de estas imágenes representa el componente responsable de interpretar las instrucciones, determinar las operaciones a realizar y localizar los datos necesarios? Por favor, selecciona una de las siguientes imágenes.")
                     self.question_label.pack()
-
                     self.image_frame = tk.Frame(root)
                     self.image_frame.pack()
-
                     self.image_labels = []
                     for _ in range(4):
                         image_label = tk.Label(self.image_frame, image=None)
                         image_label.pack(side=tk.LEFT, padx=10)
                         image_label.bind("<Button-1>", self.check_answer)
                         self.image_labels.append(image_label)
-
                     self.correct_answer = 0  # Índice de la respuesta correcta
                     self.load_question()
-
                 def load_question(self):
                     # Cargar la pregunta y las imágenes aquí
                     question = "En la fase de decodificación del proceso de ejecución de instrucciones de una computadora, ¿cuál de estas imágenes representa el componente responsable de interpretar las instrucciones, determinar las operaciones a realizar y localizar los datos necesarios? Por favor, selecciona una de las siguientes imágenes."
                     options = ["RAM", "GPU", "HDD", "CPU"]
-                    
                     self.question_label.config(text=question)
                     self.correct_answer = 3  # Respuesta correcta en la posición 0 (RAM)
-
                     for i in range(4):
                         image_path = f"option_{i+1}.png"
                         image = Image.open(f"imgs/{image_path}")
@@ -435,19 +424,15 @@ if __name__ == "__main__":
                         photo = ImageTk.PhotoImage(image)
                         self.image_labels[i].config(image=photo)
                         self.image_labels[i].image = photo
-
                 def check_answer(self, event):
                     clicked_label = event.widget
                     clicked_index = self.image_labels.index(clicked_label)
-                    
                     if clicked_index == self.correct_answer:
-                        print("¡Respuesta correcta!")
-                        texto_a_audio("Respuesta correcta.")
+                        consolesay("¡Respuesta correcta!")
+                        sys.exit(1)
                     else:
-                        print("Respuesta incorrecta.")
-                        texto_a_audio("Respuesta incorrecta.")
+                        consolesay("Respuesta incorrecta.")
                     self.load_question()
-
             if __name__ == "__main__":
                 root = tk.Tk()
                 app = ComputerStructureQuizApp(root)
