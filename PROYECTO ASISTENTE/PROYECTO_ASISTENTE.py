@@ -316,9 +316,9 @@ if __name__ == "__main__":
             class ComputerStructureQuizApp:
                 def __init__(self, root):
                     self.root = root
-                    self.root.title("JUEGO: ESTRUCTURA DE UN COMPUTADOR")
+                    self.root.title("JUEGO: EJECUCION DE INSTRUCCIONES")
 
-                    self.question_label = tk.Label(root, text="¿Qué componente almacena datos de manera temporal en la CPU?")
+                    self.question_label = tk.Label(root, text="En la fase de decodificación del proceso de ejecución de instrucciones de una computadora, ¿cuál de estas imágenes representa el componente responsable de interpretar las instrucciones, determinar las operaciones a realizar y localizar los datos necesarios? Por favor, selecciona una de las siguientes imágenes.")
                     self.question_label.pack()
 
                     self.image_frame = tk.Frame(root)
@@ -342,7 +342,7 @@ if __name__ == "__main__":
                     self.correct_answer = 0  # Respuesta correcta en la posición 0 (RAM)
                     for i in range(4):
                         image_path = f"option_{i+1}.png"
-                        image = Image.open(image_path)
+                        image = Image.open(f"imgs/{image_path}")
                         image = image.resize((200, 200))
                         photo = ImageTk.PhotoImage(image)
                         self.image_labels[i].config(image=photo)
@@ -352,6 +352,7 @@ if __name__ == "__main__":
                     clicked_index = self.image_labels.index(clicked_label)  
                     if clicked_index == self.correct_answer:
                         consolesay("¡Respuesta correcta!")
+                        sys.exit(1)
                     else:
                         consolesay("Respuesta incorrecta.")
                     self.load_question()

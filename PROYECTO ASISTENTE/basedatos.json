@@ -13,12 +13,6 @@
     
     "almacenamiento":["Finalmente, en esta fase, los resultados de la operacion se almacenan en la ubicacion adecuada, que puede ser en la memoria, en registros internos o en otro lugar. Ademas, si es necesario actualizar el estado de los registros, se realiza en esta etapa. Esto asegura que los resultados esten disponibles para instrucciones posteriores o para la transferencia a dispositivos de salida, si es necesario."],
 
-    "PE PREGUNTA 01": ["PRIMERA PREGUNTA: ¿Cual es el objetivo principal del pensamiento computacional?",
-                        "a) Resolver problemas utilizando algoritmos y abstraccion. b) Programar robots y sistemas autonomos. c) Diseñar hardware de computadoras."],
-    "PE PREGUNTA 02": ["SEGUNDA PREGUNTA: 2. El primer paso del pensamiento computacional es: identificar el problema.",
-                        "¿VERDADERO? o ¿FALSO?"],
-    "PE PREGUNTA 03": ["TERCERA PREGUNTA: ¿Qué es un algoritmo en terminos de pensamiento computacional?",
-                        "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"],
     "add":["Primera etapa: Se copia la direccion de la instruccion en el registro de direcciones MAR.",
     "Segunda etapa: Se aumenta la direccion en el registro PC para apuntar a la proxima instruccion.",
     "Tercera etapa: Se lee la parte baja de la instruccion en la memoria y se almacena en el registro MDR.",
@@ -53,7 +47,15 @@
     "jwz":["La instruccion JMZ #456 es una orden en un programa de computadora que decide si dar un salto o continuar ejecutando las instrucciones siguientes. Esto depende de si el indicador de cero (Z) esta activo en el registro de estado.",
     "Si Z esta activo (Z=1), el programa saltara a la direccion de memoria “#456” y continuara desde alli. Es como cambiar a una pagina especifica en un libro.",
     "Si Z no esta activo (Z=0), el programa seguira ejecutando las instrucciones en orden sin saltar a ninguna direccion.",
-    "En el cronograma de ejecucion de esta instruccion, despues de que la computadora capture la instruccion, se revisa el indicador de cero. Si la condicion para saltar no se cumple (Z=0), la computadora continua con la siguiente instruccion en el orden. Pero si la condicion se cumple (Z=1), la computadora carga la direccion de memoria “#456” en el contador de programa (PC) y luego sigue ejecutando desde alli."]
+    "En el cronograma de ejecucion de esta instruccion, despues de que la computadora capture la instruccion, se revisa el indicador de cero. Si la condicion para saltar no se cumple (Z=0), la computadora continua con la siguiente instruccion en el orden. Pero si la condicion se cumple (Z=1), la computadora carga la direccion de memoria “#456” en el contador de programa (PC) y luego sigue ejecutando desde alli."],
+
+    "PE PREGUNTA 01": ["PRIMERA PREGUNTA: ¿Cual es el objetivo principal del pensamiento computacional?",
+                        "a) Resolver problemas utilizando algoritmos y abstraccion. b) Programar robots y sistemas autonomos. c) Diseñar hardware de computadoras."],
+    "PE PREGUNTA 02": ["SEGUNDA PREGUNTA: 2. El primer paso del pensamiento computacional es: identificar el problema.",
+                        "¿VERDADERO? o ¿FALSO?"],
+    "PE PREGUNTA 03": ["TERCERA PREGUNTA: ¿Qué es un algoritmo en terminos de pensamiento computacional?",
+                        "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"]
+
 }
 
 
