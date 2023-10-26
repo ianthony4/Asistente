@@ -173,17 +173,17 @@ if __name__ == "__main__":
     salir = False
 
     #USANDO LA FUNCIÓN TEXTO_A_AUDIO SE HACE LEER CADENAS DE TEXTO, COMO SI LA COMPUTADORA TE ESTUVIERA HABLANDO
-    #texto_a_audio(datos['bienvenida'])
+    texto_a_audio(datos['bienvenida'])
     print("Di tu nombre: ")
     #LA FUNCION 'enviar_voz' RETORNA UNA CADENA DE TEXTO DEL AUDIO ENVIADO POR VOZ DEL USUARIO
     nombre = enviar_voz()
     consolesay("Hola {}. Mucho gusto.".format(nombre))
-    #consolesay("{} Ahora voy a explicarte sobre las opciones que tiene este programa. Tienes 3 opciones para escoger.".format(nombre))
-    #texto_a_audio("Aprendizaje. Tests. Juegos.")
-    #consolesay("La opción Aprendizaje es donde podrás aprender todo con respecto a la "+tema+". La opción Tests es donde podrás poner en práctica lo que aprendiste mediante exámenes. Y por último, la tercer opción, es Juegos, donde tambien podrás demostrar lo que aprendiste jugando.")
+    consolesay("{} Ahora voy a explicarte sobre las opciones que tiene este programa. Tienes 3 opciones para escoger.".format(nombre))
+    texto_a_audio("Aprendizaje. Tests. Juegos.")
+    consolesay("La opción Aprendizaje es donde podrás aprender todo con respecto a la "+tema+". La opción Tests es donde podrás poner en práctica lo que aprendiste mediante exámenes. Y por último, la tercer opción, es Juegos, donde tambien podrás demostrar lo que aprendiste jugando.")
     consolesay("¿Qué opción eliges?")
     time.sleep(0.1)
-    #texto_a_audio("¿Aprendizaje? ¿Tests? ¿Juegos?")
+    texto_a_audio("¿Aprendizaje? ¿Tests? ¿Juegos?")
     #SE USA LA FUNCION SLEEP DE LA LIBRERIA TIME PARA PAUSAR UN TIEMPO LA EJECUCION DEL PROGRAMA
     #PARA QUE LA INTERACCION SEA MAS NATURAL
     time.sleep(0.1)
@@ -217,7 +217,7 @@ if __name__ == "__main__":
                 root.mainloop()
             if __name__ == "__main__":
                 main()
-            #texto_a_audio(datos['aprendizaje'])           
+            texto_a_audio(datos['aprendizaje'])           
             def mostrarImagen(str): #Método para mostrar imagen probara usando .png o .jpg
                 extension = ".jpg"
                 extension2 = ".png"
@@ -232,7 +232,7 @@ if __name__ == "__main__":
                 mostrarImagen(str)
                 texto_a_audio(datos[str])
             #FASES
-            ############ejecutar("fases")
+            ejecutar("fases")
             #PREGUNTA AL USUARIO CON QUÉ PARTE DESEA EMPEZAR
             while(not salir):
                 print(opciones)
@@ -260,7 +260,7 @@ if __name__ == "__main__":
                         #menu2 = "\n1) Cronograma instruccion añadir (ADD)\n2) Ejecucion de la instruccion SW \n3) Ejecucion de la instruccion JWZ"
                         #menuadd = "\n1) Fase de Busqueda \n2) Fase de busqueda de operandos\n3)Fase de ejecucion y almacenamiento del resultado"
                         if respuesta == "cronograma instrucción agregar":
-                            #texto_a_audio(datos['add'])
+                            texto_a_audio(datos['add'])
                             while(not salir):
                                 consolesay(menuadd)
                                 consolesay("¿Por cual deseas empezar?")
@@ -270,9 +270,9 @@ if __name__ == "__main__":
                                 if respuesta == "fase de búsqueda":
                                     ejecutar("busqueda")
                                 elif respuesta == "fase de búsqueda de operandos":
-                                    ejecutar("operandos")
+                                    texto_a_audio(datos["operandos"])
                                 elif respuesta == "fase de ejecución y almacenamiento del resultado":
-                                    ejecutar("ejecalmc")
+                                    texto_a_audio(datos["ejecalmc"])
                                 else:
                                     not_recognized()
                                     continue
@@ -365,7 +365,7 @@ if __name__ == "__main__":
                     texto_a_audio(datos['PE PREGUNTA 03'])
                     print("TERCERA PREGUNTA: ¿Qué es un algoritmo en términos de pensamiento computacional?")
                     alternativas = ["Un patrón de diseño visual","Un lenguaje de programación", "Una secuencia de pasos para resolver un problema", "Una representación gráfica de datos"]
-                    respuesta_correcta ="Una secuencia de pasos para resolver un problema"
+                    respuesta_correcta ="Una secuencia de pasos para resolver un problema" # RESPUESTA CORRECTA
                     escribir_respuesta(pregunta, alternativas, respuesta_correcta)
                     if still():
                         continue
@@ -395,6 +395,7 @@ if __name__ == "__main__":
         elif respuesta == "juegos":
             consolesay("Elegiste la opción JUEGOS.")
             consolesay("El primer juego consta en contestar las preguntas, haciendo click en la imagen que crees que es la respuesta.")
+            consolesay("En la fase de decodificacion del proceso de ejecucion de instrucciones de una computadora, ¿cual de estas imagenes representa el componente responsable de interpretar las instrucciones, determinar las operaciones a realizar y localizar los datos necesarios? Por favor, selecciona una de las siguientes imagenes.")
             class ComputerStructureQuizApp:
                 def __init__(self, root):
                     self.root = root
@@ -436,6 +437,7 @@ if __name__ == "__main__":
             if __name__ == "__main__":
                 root = tk.Tk()
                 app = ComputerStructureQuizApp(root)
+                
                 root.mainloop()
         #SI EL MENSAJE ENVIADO NO ES ERRONEO LE PIDE AL USUARIO SELECCIONAR UNA OPCION VALIDA
         else:
