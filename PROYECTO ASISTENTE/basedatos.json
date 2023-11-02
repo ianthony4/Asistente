@@ -20,11 +20,81 @@
     "PE PREGUNTA 03": ["TERCERA PREGUNTA: ¿Qué es un algoritmo en terminos de pensamiento computacional?",
                         "1) Un patron de diseño visual 2) Un lenguaje de programacion 3) Una secuencia de pasos para resolver un problema 4) Una representacion grafica de datos"],
     "EJ PREGUNTA 01": {
+        "pregunta": ["La fase de decodificación en la ejecución de una instrucción de un computador suele ser más corta que un ciclo de la señal de reloj."],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Falso"]
+    },
+    "EJ PREGUNTA 02": {
+        "pregunta": ["En la ejecución de instrucciones, ¿Qué función desempeña el registro MAR (Memory Address Register)?"],
+        "alternativas": ["Almacena el resultado de una operación aritmética", "Guarda la instrucción actual a ejecutar", "Contiene la dirección de memoria que se leerá o escribirá", "Almacena temporalmente los datos de entrada del usuario"],
+        "respuesta": ["Contiene la dirección de memoria que se leerá o escribirá"]
+    },
+    "EJ PREGUNTA 03": {
+        "pregunta": ["En la ejecución de instrucciones, ¿Cuál es la función principal de la unidad de control de la CPU?"],
+        "alternativas": ["Realizar cálculos matemáticos y operaciones aritméticas", "Almacenar temporalmente los resultados de las instrucciones", "Transferir datos entre la CPU y la memoria principal", "Interpretar y ejecutar las instrucciones del programa"],
+        "respuesta": ["Interpretar y ejecutar las instrucciones del programa"]
+    },
+    "EJ PREGUNTA 04": {
+        "pregunta": ["Durante la fase de \"Ejecución\" de una instrucción, se realizan operaciones aritméticas, lógicas o de transferencia de datos, y se generan los resultados de acuerdo con la operación especificada."],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Verdadero"]
+    },
+    "EJ PREGUNTA 05": {
+        "pregunta": ["En la fase de \"Almacenamiento\" del ciclo de procesamiento de una instrucción en una CPU, ¿Cuál de las siguientes actividades puede llevarse a cabo?"],
+        "alternativas": ["Actualización del estado de los registros", "Decodificación de la instrucción", "Realización de operaciones aritméticas", "Interpretación del operando de la instrucción"],
+        "respuesta": ["Actualización del estado de los registros"]
+    },
+    "EJ PREGUNTA 06": {
+        "pregunta": ["¿Cuál es el tercer paso en la fase de búsqueda de una CPU?"],
+        "alternativas": ["Transferir dirección de memoria al registro de programa", "Acceso a la memoria", "Carga de instrucciones en el registro de instrucciones", "Lectura de la parte alta de la instrucción"],
+        "respuesta": ["Acceso a la memoria"]
+    },
+    "EJ PREGUNTA 07": {
+        "pregunta": ["¿Qué se almacena en el registro de instrucción (IR) durante la fase de búsqueda?"],
+        "alternativas": ["La dirección de memoria actual", "La parte alta de la instrucción", "El registro de datos de la memoria", "La dirección de la siguiente instrucción"],
+        "respuesta": ["La parte alta de la instrucción"]
+    },
+    "EJ PREGUNTA 08": {
+        "pregunta": ["¿Cuál es el propósito de la \"Fase de búsqueda de operandos\" en el ciclo de ejecución de una instrucción en una CPU?"],
+        "alternativas": ["Almacenar la dirección de memoria en el registro MAR", "Cargar el operando de memoria en el registro MDR", "Realizar una operación de suma en la ALU", "Actualizar el registro de estado"],
+        "respuesta": ["Cargar el operando de memoria en el registro MDR"]
+    },
+    "EJ PREGUNTA 09": {
         "pregunta": ["¿Qué función realiza la fase de \"Búsqueda de Operandos\" en la ejecución de una instrucción en una computadora?"],
         "alternativas": ["Decodificar la instrucción", "Leer la instrucción desde la memoria", "Obtener los operandos necesarios para la instrucción", "Almacenar los resultados de la instrucción"],
         "respuesta": ["Obtener los operandos necesarios para la instrucción"]
     },
-    "EJ PREGUNTA 02": {
+    "EJ PREGUNTA 10": {
+        "pregunta": ["En la fase de ejecución y almacenamiento del resultado,¿La ALU es la que hace operaciones aritméticas sin necesidad de alguna otra señal?"],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Falso"]
+    },
+    "EJ PREGUNTA 11": {
+        "pregunta": ["¿Cuál es el propósito principal de la instrucción SW #456 en una arquitectura de procesador?"],
+        "alternativas": ["Realizar una suma de dos números", "Escribir el dato contenido en el acumulador en una dirección de memoria específica", "Leer un valor de memoria y almacenarlo en el acumulador", "Decodificar una instrucción"],
+        "respuesta": ["Escribir el dato contenido en el acumulador en una dirección de memoria específica"]
+    },
+    "EJ PREGUNTA 12": {
+        "pregunta": ["¿Cuántos bits se utilizan para indicar la dirección de memoria en la instrucción SW #456?"],
+        "alternativas": ["Cuatro bits", "Ocho bits", "Doce bits", "Dieciséis bits"],
+        "respuesta": ["Doce bits"]
+    },
+    "EJ PREGUNTA 13": {
+        "pregunta": ["¿Qué función realiza la fase de \"Búsqueda de Operandos\" en la ejecución de una instrucción en una computadora?"],
+        "alternativas": ["Decodificar la instrucción", "Leer la instrucción desde la memoria", "Obtener los operandos necesarios para la instrucción", "Almacenar los resultados de la instrucción"],
+        "respuesta": ["Obtener los operandos necesarios para la instrucción"]
+    },
+    "EJ PREGUNTA 14": {
+        "pregunta": ["En una instrucción JMZ #456, el programa saltará a la dirección de memoria \"#456\" si el indicador de cero (Z) en el registro de estado está activo."],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Verdadero"]
+    },
+    "EJ PREGUNTA 15": {
+        "pregunta": ["Una de las características de la ejecución de la instrucción JMZ #456 a diferencia de la instrucción SW #456 es que no realiza una bifurcación condicional utilizando direccionamiento directo ¿Verdadero o falso?"],
+        "alternativas": ["Verdadero", "Falso"],
+        "respuesta": ["Falso"]
+    },
+    "EJ PREGUNTA 16": {
         "pregunta": ["En una instrucción JMZ #456, el programa saltará a la dirección de memoria \"#456\" si el indicador de cero (Z) en el registro de estado está activo."],
         "alternativas": ["Verdadero", "Falso"],
         "respuesta": ["Verdadero"]

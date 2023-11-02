@@ -373,12 +373,9 @@ if __name__ == "__main__":
                         break
                         
                 elif respuesta == "ejecución de instrucciones":
-                    print("------------------------------------------------------------------------------------")
-                    consolesay("EJ PREGUNTA 01")
-                    mostrar_pregunta(datos["EJ PREGUNTA 01"])
-                    print("------------------------------------------------------------------------------------")
-                    consolesay("EJ PREGUNTA 02")
-                    mostrar_pregunta(datos["EJ PREGUNTA 02"])
+                    # loop to print "i. " from 1 to 16
+                    for i in range(1, 17):
+                        mostrar_pregunta(datos["EJ PREGUNTA 0" + str(i)])
                 
                 else:
                     not_recognized()
