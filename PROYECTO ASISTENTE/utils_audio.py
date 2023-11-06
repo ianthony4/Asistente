@@ -1,4 +1,14 @@
 import speech_recognition as sr
+import pyttsx3
+
+def text_to_voice(msg):
+    answer = pyttsx3.init()
+    answer.say(msg)
+    answer.runAndWait()
+    
+def console_print_say(msg):
+    print(msg + "\n")
+    text_to_voice(msg)
 
 def recognize_voice():
     # Initialize recognizer
