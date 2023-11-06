@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from PIL import Image
 from utils_audio import console_print_say
 from utils_audio import recognize_voice
 
@@ -108,6 +109,20 @@ def pop_if_is_possible(queries):
     if queries:
         queries.pop()
 
+def show_existent_images(queries):
+    queries_stack = queries.copy()
+    queries_stack.reverse()
+    queries_stack.pop()
+    queries_stack.append("imagenes")
+    image_paths = info_dictionary
+    while queries_stack != []:
+        temp_query = queries_stack.pop()
+        image_paths = image_paths[temp_query]
+    print(image_paths)
+    for path in image_paths:
+        img = Image.open(f"imgs/{path}")
+        img.show()
+
 if __name__ == "__main__":
     console_print_say(info_dictionary["bienvenida"])
     username = recognize_voice()
@@ -124,6 +139,7 @@ if __name__ == "__main__":
             current_structure = last_menu(queries)
 
         if is_dictionary(current_structure):
+            console_print_say("¿Cuál deseas aprender?")
             interaction = get_key_list_if_exists(current_structure)
         else:
             interaction = current_structure
@@ -131,6 +147,7 @@ if __name__ == "__main__":
         console_print_say(interaction)
 
         if not is_dictionary(current_structure):
+            show_existent_images(queries)
             pop_if_is_possible(queries)
             console_print_say("\n¿Quieres seguir aprendiendo?")
             console_print_say(list(commands.values()))
