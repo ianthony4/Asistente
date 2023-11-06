@@ -1,23 +1,32 @@
 import speech_recognition as sr
 import pyttsx3
 
-def text_to_voice(msg):
+def text_to_voice(sentence):
     answer = pyttsx3.init()
-    answer.say(msg)
+    answer.say(sentence)
     answer.runAndWait()
     
-def console_print_say(msg):
-    print(msg + "\n")
-    text_to_voice(msg)
+def console_print_say(phrase_array):
+    if type(phrase_array) is str:
+        console_print_say_string(phrase_array)
+        return
+    
+    for sentence in phrase_array:
+        console_print_say_string(sentence)
+
+def console_print_say_string(sentence):
+    print(sentence + " "),
+    text_to_voice(sentence)
 
 def recognize_voice():
     # Initialize recognizer
     voice_recognizer = sr.Recognizer()
+    query = None
 
     # Use microphone as source
     with sr.Microphone() as source:
         voice_recognizer.adjust_for_ambient_noise(source)
-        # print("Escuchando...")
+        print("Escuchando...")
         audio = voice_recognizer.listen(source)
 
     # Recognize speech using Google Speech Recognition
