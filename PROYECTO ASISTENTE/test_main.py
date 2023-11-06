@@ -10,8 +10,9 @@ database_path = Path("info.json")
 # Global variables
 username = "Usuario"
 info_dictionary = {}
-exit_or_continue = {
+commands = {
     "continuar": "continuar",
+    "regresar": "regresar",
     "salir": "salir"
 }
 
@@ -27,8 +28,8 @@ def get_key_list_if_exists(current_structure):
         not_recognized()
         return None
     
-def previous_menu(queries_stack):
-    queries_stack.pop()
+def last_menu(queries):
+    queries_stack = queries.copy()
     queries_stack.reverse()
     current_structure = info_dictionary
     while queries_stack != []:
@@ -42,7 +43,7 @@ def exists_in_dictionary(current_structure, query):
         return current_structure[query]
     except KeyError:
         not_recognized()
-        return current_structure
+        return None
 
 
 def is_dictionary(current_structure):
@@ -62,31 +63,41 @@ if __name__ == "__main__":
     current_structure = info_dictionary
     queries = []
     while True:
-        print(current_structure)
         if is_dictionary(current_structure):
             interaction = get_key_list_if_exists(current_structure)
             print("is dictionary")
         else:
             interaction = current_structure
 
-        print(interaction)
         console_print_say(interaction)
 
         if not is_dictionary(current_structure):
-            console_print_say(get_key_list_if_exists(exit_or_continue))
+            if queries:
+                queries.pop()
+            console_print_say(get_key_list_if_exists(commands))
         
         query = recognize_voice()
-        if(query == "regresar"):
-            current_structure = previous_menu(queries)
+        pre_structure = None
         
-        elif not exists_in_dictionary(current_structure, query):
-            continue
-
+        if query == "continuar":
+            current_structure = last_menu(queries)
+        elif query == "regresar":
+            if queries:
+                queries.pop()
+            current_structure = last_menu(queries)
+        elif query == "regresar al inicio":
+            queries = []
+            current_structure = info_dictionary
+        elif query == "salir":
+            exit(0)
+        else:
+            pre_structure = exists_in_dictionary(current_structure, query)
         
-        current_structure = exists_in_dictionary(current_structure, query)
-        
-        queries.append(query)
+        if pre_structure:
+            current_structure = pre_structure
+            queries.append(query)
         
         print("Ciclo terminado")
+        print(queries)
 
         
