@@ -11,9 +11,17 @@ database_path = Path("info.json")
 username = "Usuario"
 info_dictionary = {}
 commands = {
-    "continuar": "continuar",
-    "regresar": "regresar",
-    "salir": "salir"
+    "continuar": "Continuar",
+    "regresar": "Regresar",
+    "regresar al inicio": "Regresar al inicio",
+    "salir": "Salir"
+}
+options = {
+    "uno": 0,
+    "dos": 1,
+    "tres": 2,
+    "cuatro": 3,
+    "cinco": 4,
 }
 
 
@@ -38,6 +46,34 @@ def last_menu(queries):
     
     return current_structure
 
+def show_question(question_key):
+    question_structure = info_dictionary["preguntas"][question_key]
+    console_print_say(question_structure["pregunta"][0])
+    questions = list(question_structure["alternativas"].keys())
+
+    for i, alternativa in enumerate(questions, start = 1):
+        print(f"{str(i)}) {alternativa}")
+    user_answer = recognize_voice()
+    
+    if is_right_answer(question_structure, user_answer):
+        console_print_say("¡Respuesta correcta!")
+        # upScore()
+    else:
+        console_print_say("Respuesta incorrecta")
+
+def is_right_answer(question, response):
+    if question["respuesta"][0].lower() == response.lower():
+        return True
+    
+    alternative_exists = exists_in_dictionary(question, response)
+    if alternative_exists:
+        return bool(question["alternativas"][response])
+    
+    print("Revisaremos numéricamente")
+    alternative_index = exists_in_dictionary(options, response)
+    alternative = list(question["alternativas"].keys())[alternative_index]
+    return bool(question["alternativas"][alternative])
+
 def exists_in_dictionary(current_structure, query):
     try:
         return current_structure[query]
@@ -45,6 +81,12 @@ def exists_in_dictionary(current_structure, query):
         not_recognized()
         return None
 
+def in_questions(current_structure):
+    if "preguntas" in current_structure:
+        return True
+    else:
+        print("No hay preguntas")
+        return False
 
 def is_dictionary(current_structure):
     if type(current_structure) is dict:
@@ -53,8 +95,7 @@ def is_dictionary(current_structure):
         return False
 
 def not_recognized():
-    console_print_say(username + " creo que no has respondido con alguna de las instrucciones indicadas anteriormente")
-    console_print_say("Responde con una de las alternativas mencionadas.")
+    console_print_say(username + " creo que no has respondido con alguna opción posible a elegir en este contexto")
     return False
 
 if __name__ == "__main__":
@@ -62,10 +103,15 @@ if __name__ == "__main__":
     username = recognize_voice()
     current_structure = info_dictionary
     queries = []
+    iterator = 1
     while True:
+        if in_questions(current_structure):
+            show_question("EJ PREGUNTA " + str(iterator))
+            iterator = iterator + 1
+            continue
+
         if is_dictionary(current_structure):
             interaction = get_key_list_if_exists(current_structure)
-            print("is dictionary")
         else:
             interaction = current_structure
 
@@ -74,7 +120,7 @@ if __name__ == "__main__":
         if not is_dictionary(current_structure):
             if queries:
                 queries.pop()
-            console_print_say(get_key_list_if_exists(commands))
+            console_print_say(list(commands.values()))
         
         query = recognize_voice()
         pre_structure = None
@@ -98,6 +144,3 @@ if __name__ == "__main__":
             queries.append(query)
         
         print("Ciclo terminado")
-        print(queries)
-
-        
