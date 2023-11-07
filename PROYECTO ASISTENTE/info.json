@@ -1,8 +1,8 @@
 {
-    "bienvenida": ["Hola. Soy tu Asistente Virtual. Fui creada para instruirte todo respecto a la Estructura de un computador. Antes de empezar ¿Podrias decirme tu nombre?"],
-    "aprendizaje": {
-        "conceptos generales":{
-            "introducción": 
+    "Bienvenida": ["Hola. Soy tu Asistente Virtual. Fui creada para instruirte todo respecto a la Estructura de un computador. Antes de empezar ¿Podrias decirme tu nombre?"],
+    "Aprendizaje": {
+        "Conceptos generales":{
+            "Introducción": 
             [
                 "Las instrucciones típicas que ejecuta un computador suelen dividirse en cuatro fases.",
                 "Cada fase tiene una duración mayor que un ciclo de la señal de reloj y contiene una serie de operaciones básicas que pueden ejecutarse en paralelo o en serie.",
@@ -12,7 +12,7 @@
                 "- Ejecución\n",
                 "- Almacenamiento\n"
             ],
-            "lectura":
+            "Lectura":
             [
                 "La fase de lectura de instrucción es la primera fase del ciclo de instrucción de un procesador.",
                 "En esta fase, el procesador busca la instrucción en la memoria.",
@@ -21,29 +21,29 @@
                 "Finalmente, el procesador transfiere el dato al registro IR.",
                 "Este proceso se realiza dos veces en el ejemplo del computador porque las instrucciones son de 16 bits, mientras que los buses externos de datos y la memoria se consideran con una longitud de palabra de 8 bits."
             ],
-            "decodificación":
+            "Decodificación":
             [
                 "En esta fase, la CPU interpreta la instrucción almacenada en el registro IR.",
                 "La decodificación implica entender que operación se debe realizar y qué datos se necesitan.",
                 "Además, en esta etapa, se determinan las ubicaciones de memoria o registros donde se encuentran los operandos.",
                 "La CPU puede cargar los operandos en registros internos para su posterior procesamiento."
             ],
-            "ejecución":
+            "Ejecución":
             [
                 "Una vez que la CPU ha decodificado la instrucción y ha adquirido los operandos, se procede a realizar la operación indicada por la instrucción.",
                 "Esto puede implicar operaciones aritméticas, lógicas o de transferencia de datos.",
                 "En esta fase, los datos se procesan y se generan los resultados de acuerdo con la operación especificada."
             ],
-            "almacenamiento":
+            "Almacenamiento":
             [
                 "Finalmente, en esta fase, los resultados de la operación se almacenan en la ubicación adecuada, que puede ser en la memoria, en registros internos o en otro lugar.",
                 "Además, si es necesario actualizar el estado de los registros, se realiza en esta etapa.",
                 "Esto asegura que los resultados estén disponibles para instrucciones posteriores o para la transferencia a dispositivos de salida, si es necesario."
             ]
         },
-        "cronograma instrucción add":
+        "Cronograma instrucción add":
         {
-            "fase de búsqueda": 
+            "Fase de búsqueda": 
             [
                 "Consta de 5 pasos: ",
                 "1. Transferir dirección de memoria (MAR) al registro de programa (PC): La CPU necesita saber la dirección de la siguiente instrucción que se ejecutará.",
@@ -58,19 +58,19 @@
                 "Durante esta operación, la parte superior de la instrucción se busca en la memoria y el registro del programa se incrementa para apuntar a la siguiente parte.",
                 "5. Carga de la parte alta de la instrucción en el registro de instrucciones: La parte alta de la instrucción se almacena en el registro de instrucciones (IR) y la CPU también puede comenzar a calcular cómo procesar la instrucción."
             ],
-            "fase de búsqueda de operandos":
+            "Fase de búsqueda de operandos":
             [
                 "Esta fase consta principalmente de dos periodos: ",
                 "1. Transferencia: La dirección es transferida de bits hasta el registro MAR. Se habilita la salida de los bits y al bus del procesador.",
                 "2. Lectura: Se activan las lecturas de la memoria CS y RD para que después del tiempo de acceso se puedan cargar los operandos en el registro MDR, así termina la búsqueda de operandos que antes su dirección estaba contenida en IR."
             ],
-            "fase de ejecución y almacenamiento":
+            "Fase de ejecución y almacenamiento":
             [
                 "Estas dos fases se realizan en el mismo periodo, en el caso de una instrucción AC <- AC + M A R en el ciclo 8 de la CPU, se conecta el registro MDR a la entrada B de la ALU activando MDR-EI.",
                 "Se indica a ALU mediante señales OP, para terminar con la activación de la señal de carga de AC"
             ]
         },
-        "ejecución de la instrucción sw":
+        "Ejecución de la instrucción sw":
         [
             "La instrucción SW #456 tiene como objetivo escribir el dato contenido en el acumulador en una dirección de memoria especificada en la instrucción.",
             "Esta instrucción consta de 4 bits de código y 12 bits para indicar la dirección de memoria.",
@@ -79,7 +79,7 @@
             "En el ciclo 6, se da la traslación de memoria y el contenido del Acumulador a registros específicos.",
             "En el ciclo 7 se realiza la escritura en la memoria principal."
         ],
-        "ejecución de instrucción jmz":
+        "Ejecución de instrucción jmz":
         [
             "A diferencia de la anterior instrucción, esta realiza una bifurcación condicional utilizando direccionamiento directo.",
             "Se salta a la dirección contenida en el código de dirección si el indicador de cero del registro de estado está activo.",
@@ -88,28 +88,29 @@
             "Ahora, si se cumple la condición se realiza la carga del PC con el valor efectivo #456 en el periodo 6, y después inicia la ejecución de una nueva instrucción."
         ]
     },
-    "imagenes":{
-        "conceptos generales":{
-            "introducción": ["intro.png", "fases.png"],
-            "lectura": ["lectura.jpg"],
-            "decodificación": ["decodificacion.jpg"],
-            "ejecución": ["ejecucion.jpg"]
+    "Imágenes":{
+        "Conceptos generales":{
+            "Introducción": ["intro.png", "fases.png"],
+            "Lectura": ["lectura.jpg"],
+            "Decodificación": ["decodificacion.jpg"],
+            "Ejecución": ["ejecucion.jpg"],
+            "Almacenamiento": ["almacenamiento.jpg"]
         },
-        "cronograma instrucción add":{
-            "fase de búsqueda": ["busqueda.png"],
-            "fase de búsqueda de operandos": ["busqueda.png"],
-            "fase de ejecución y almacenamiento": []
+        "Cronograma instrucción add":{
+            "Fase de búsqueda": ["busqueda.png"],
+            "Fase de búsqueda de operandos": ["busqueda.png"],
+            "Fase de ejecución y almacenamiento": []
         },
-        "ejecución de la instrucción sw":
+        "Ejecución de la instrucción sw":
         [
             "sw.png"
         ],
-        "ejecución de instrucción jmz":
+        "Ejecución de instrucción jmz":
         [
             "jwz.png"
         ]
     },
-    "preguntas":{
+    "Preguntas":{
         "EJ PREGUNTA 1": {
             "pregunta": ["La fase de decodificación en la ejecución de una instrucción de un computador suele ser más corta que un ciclo de la señal de reloj."],
             "alternativas": 

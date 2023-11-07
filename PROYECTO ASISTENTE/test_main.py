@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from PIL import Image
 from utils_audio import console_print_say
+from utils_audio import console_print_say_options
 from utils_audio import recognize_voice
 
 # Get paths
@@ -113,19 +114,21 @@ def show_existent_images(queries):
     queries_stack = queries.copy()
     queries_stack.reverse()
     queries_stack.pop()
-    queries_stack.append("imagenes")
+    queries_stack.append("imágenes".capitalize())
     image_paths = info_dictionary
+    
     while queries_stack != []:
         temp_query = queries_stack.pop()
         image_paths = image_paths[temp_query]
-    print(image_paths)
+
     for path in image_paths:
         img = Image.open(f"imgs/{path}")
         img.show()
 
 if __name__ == "__main__":
-    console_print_say(info_dictionary["bienvenida"])
+    console_print_say(info_dictionary["Bienvenida"])
     username = recognize_voice()
+    print()
     current_structure = info_dictionary
     queries = []
     iterator = 1
@@ -138,13 +141,20 @@ if __name__ == "__main__":
             pop_if_is_possible(queries)
             current_structure = last_menu(queries)
 
+        if queries:
+            console_print_say(f"Elegiste la opción {query.upper()}")
+
+        print()
+
         if is_dictionary(current_structure):
-            console_print_say("¿Cuál deseas aprender?")
+            console_print_say("\nElige que deseas conocer")
             interaction = get_key_list_if_exists(current_structure)
+            console_print_say_options(interaction)
         else:
             interaction = current_structure
-
-        console_print_say(interaction)
+            console_print_say(interaction)
+        
+        print()
 
         if not is_dictionary(current_structure):
             show_existent_images(queries)
@@ -153,17 +163,18 @@ if __name__ == "__main__":
             console_print_say(list(commands.values()))
         
         query = recognize_voice()
+        query = query.capitalize()
         pre_structure = None
         
-        if query == "continuar":
+        if query == "continuar".capitalize():
             current_structure = last_menu(queries)
-        elif query == "regresar":
+        elif query == "regresar".capitalize():
             pop_if_is_possible(queries)
             current_structure = last_menu(queries)
-        elif query == "regresar al inicio":
+        elif query == "regresar al inicio".capitalize():
             queries = []
             current_structure = info_dictionary
-        elif query == "salir":
+        elif query == "salir".capitalize():
             exit(0)
         else:
             pre_structure = exists_in_dictionary(current_structure, query)
@@ -172,4 +183,3 @@ if __name__ == "__main__":
             current_structure = pre_structure
             queries.append(query)
         
-        print("Ciclo terminado")
