@@ -49,7 +49,7 @@ def last_menu(queries):
 def show_question(question_key):
     print("------------------------------------------------------------------------------------")
     print(question_key)
-    question_structure = info_dictionary["preguntas"][question_key]
+    question_structure = info_dictionary["Preguntas"][question_key]
     console_print_say(question_structure["pregunta"][0])
     questions = list(question_structure["alternativas"].keys())
 
@@ -70,19 +70,21 @@ def is_right_answer(question, response):
     alternative_exists = exists_in_dictionary(question, response)
     if alternative_exists:
         return bool(question["alternativas"][response])
-    
-    print("Revisaremos numéricamente")
+
     alternative_index = exists_in_dictionary(options, response)
     if not alternative_index:
-       return False 
+       return False
+    
+    print("Revisaremos numéricamente")
     alternative = list(question["alternativas"].keys())[alternative_index]
     return bool(question["alternativas"][alternative])
 
 def exists_in_dictionary(current_structure, query):
+    if not is_dictionary(current_structure):
+        return None
     try:
         return current_structure[query]
     except KeyError:
-        not_recognized()
         return None
 
 def is_dictionary(current_structure):
@@ -99,10 +101,11 @@ def in_question_section(queries):
     if not queries:
         return False
     
-    return queries[-1] == "preguntas"
+    return queries[-1] == "Preguntas"
 
 def left_questions(current_structure, iterator):
     if not is_dictionary(current_structure):
+        print("No es")
         return False
     return len(list(current_structure.keys())) >= iterator
 
@@ -140,10 +143,7 @@ if __name__ == "__main__":
         elif in_question_section(queries):
             pop_if_is_possible(queries)
             current_structure = last_menu(queries)
-
-        if queries:
-            console_print_say(f"Elegiste la opción {query.upper()}")
-
+        
         print()
 
         if is_dictionary(current_structure):
@@ -182,4 +182,12 @@ if __name__ == "__main__":
         if pre_structure:
             current_structure = pre_structure
             queries.append(query)
+        elif not is_dictionary(current_structure):
+            console_print_say("No es una opción válida, se retornará a un menú cercano")
+            current_structure = last_menu(queries)
+        else:
+            not_recognized()
+            
+        if queries:
+            console_print_say(f"Elegiste la opción {query.upper()}")
         

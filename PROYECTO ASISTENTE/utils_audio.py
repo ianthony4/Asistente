@@ -34,10 +34,15 @@ def recognize_voice():
     query = None
 
     # Use microphone as source
-    with sr.Microphone() as source:
-        voice_recognizer.adjust_for_ambient_noise(source)
-        print("Escuchando...")
-        audio = voice_recognizer.listen(source)
+    try:
+        with sr.Microphone() as source:
+            voice_recognizer.adjust_for_ambient_noise(source)
+            print("Escuchando...")
+            audio = voice_recognizer.listen(source)
+    except:
+        print("No se pudo acceder al micrófono")
+        query = input()
+        return query.lower()
 
     # Recognize speech using Google Speech Recognition
     try:
